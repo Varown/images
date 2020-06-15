@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import Logo from "../logo.svg"
-import {NavLink} from 'react-router-dom'
+import {NavLink,useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { Button } from 'antd';
+import  {useStores} from "../stores";
+import { observer } from 'mobx-react';
 
 const StyledHeader=styled.header`
   display: flex;
@@ -25,10 +27,6 @@ border-bottom: 1px solid #fff;
 }
 `
 
-const StyledLinks=styled(NavLink)`
-text-decoration: none;
-
-`
 const Login = styled.div`
   margin-left: auto;
 `;
@@ -37,35 +35,49 @@ margin-left: 10px;
 `
 
 
-function Header() {
-  const [isLogin,setIsLogin]=useState(false)
+const Header=observer(()=>{
+  const {UserStore,AuthStore}=useStores()
+const history=useHistory()
+  const handleLogout=()=>{
+    AuthStore.logout()
+  }
+
+
+  const handleLogin=()=>{
+    history.push('/login');
+  }
+
+  const handleRegister=()=>{
+    history.push('/register');
+  }
+
 
   return(
     <StyledHeader>
       <Logos src={Logo} alt={Logo}/>
       <nav>
-      <StyledLink to="/" activeClassName="active" exact >首页</StyledLink>
+        <StyledLink to="/" activeClassName="active" exact >首页</StyledLink>
         <StyledLink to="/history" activeClassName="active">上传历史</StyledLink>
         <StyledLink to="/about" activeClassName="active">关于我</StyledLink>
       </nav>
-
       <Login>
         {
-          isLogin ?<>
-              <span>孟鹏</span>
-              <StyledButton type="primary" onClick={()=>setIsLogin(false)}>注销</StyledButton>
+          UserStore.currentUser ?<>
+              {UserStore.currentUser.attributes.username}
+              <StyledButton type="primary" onClick={handleLogout}>注销</StyledButton>
             </> :
             <>
-              <StyledButton type="primary" onClick={()=>setIsLogin(true)} > 登陆</StyledButton>
-              <StyledButton type="primary">注册</StyledButton>
+              <StyledButton type="primary" onClick={handleLogin} > 登陆</StyledButton>
+              <StyledButton type="primary" onClick={handleRegister}>注册</StyledButton>
             </>
 
         }
       </Login>
-
     </StyledHeader>
-  )
+  )})
 
-}
+
+
+
 
 export default Header
