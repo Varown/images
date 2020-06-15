@@ -8,13 +8,11 @@ const Home = lazy(() => import('./pages/Home'));
 const History = lazy(() => import('./pages/History'));
 const About = lazy(() => import('./pages/About'));
 
-
-
 function App() {
   return (
     <>
       <Header/>
-      <main>
+<main>
         <Suspense fallback={<Loading/>}>
         <Switch>
          <Route path="/" exact component={Home} />
@@ -22,7 +20,7 @@ function App() {
          <Route path="/about" component={About} />
        </Switch>
        </Suspense>
-      </main>
+</main>
       <Footer/>
 
       </>
