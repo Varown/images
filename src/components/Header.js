@@ -42,7 +42,7 @@ function Header() {
 
   return(
     <StyledHeader>
-      <p>Header</p>
+
       <Logos src={Logo} alt={Logo}/>
       <nav>
       <StyledLink to="/" activeClassName="active" exact >首页</StyledLink>

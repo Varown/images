@@ -1,4 +1,5 @@
 import React,{Suspense,lazy} from 'react';
+import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Loading from './components/Loading'
@@ -17,7 +18,7 @@ function App() {
   return (
     <>
       <Header/>
-<main>
+      <main>
         <Suspense fallback={<Loading/>}>
         <Switch>
          <Route path="/" exact component={Home} />
@@ -27,7 +28,7 @@ function App() {
           <Route path="/register" component={Register} />
        </Switch>
        </Suspense>
-</main>
+      </main>
       <Footer/>
 
       </>
