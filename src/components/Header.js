@@ -1,17 +1,41 @@
 import React from "react";
 import Logo from "../logo.svg"
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
+import styled from 'styled-components'
+
+
+const StyledHeader=styled.header`
+  display: flex;
+  align-items: center;
+  padding: 10px 100px;
+  background-color: #02101f;
+  color: #fff;
+`
+
+const Logos=styled.img`
+height: 30px;
+`
+
+const StyledLink=styled(NavLink)`
+text-decoration: none;
+color: #fff;
+margin-left: 30px;
+&.active{
+border-bottom: 1px solid #fff;
+}
+`
+
 function Header() {
   return(
-    <Header>
+    <StyledHeader>
       <p>Header</p>
-      <img src={Logo} alt={Logo}/>
+      <Logos src={Logo} alt={Logo}/>
       <nav>
-      <Link to="/" >首页</Link>
-        <Link to="/history">上传历史</Link>
-        <Link to="/about">关于我</Link>
+      <StyledLink to="/" activeClassName="active" exact >首页</StyledLink>
+        <StyledLink to="/history" activeClassName="active">上传历史</StyledLink>
+        <StyledLink to="/about" activeClassName="active">关于我</StyledLink>
       </nav>
-    </Header>
+    </StyledHeader>
   )
 
 }
