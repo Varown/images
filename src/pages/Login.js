@@ -1,12 +1,18 @@
 import React from "react";
+import { observer } from 'mobx-react';
+import {useStores} from "../stores";
 
-function Login() {
+
+const Login=observer(()=>{
+  const {AuthStore}=useStores();
+
   return(
     <>
-      <h1>Login</h1>
+      <h1>Login:{AuthStore.value.username}</h1>
     </>
   )
 
-}
+
+})
 
 export default Login

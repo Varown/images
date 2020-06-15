@@ -1,6 +1,6 @@
 import React from "react";
 
-function Reginster() {
+function Register() {
   return(
     <>
       <h1>Reginster</h1>
@@ -9,4 +9,4 @@ function Reginster() {
 
 }
 
-export default Reginster
+export default Register
