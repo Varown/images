@@ -24,7 +24,7 @@ function App() {
          <Route path="/history" component={History} />
          <Route path="/about" component={About} />
           <Route path="/login" component={Login} />
-          <Route path="/register " component={Register } />
+          <Route path="/register" component={Register} />
        </Switch>
        </Suspense>
 </main>
