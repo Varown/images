@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input, Button} from 'antd';
 import styled from 'styled-components'
+import {useStores} from "../stores";
 
 const Wraper = styled.div`
   max-width: 600px;
@@ -25,9 +26,17 @@ const tailLayout = {
 };
 
 const Register = () => {
+  const {AuthStore}=useStores()
 
   const onFinish = values => {
     console.log('Success:', values);
+    AuthStore.setUsername(values.username)
+    AuthStore.setPassword(values.password)
+    AuthStore.login().then(
+      ()=>{console.log("登陆成功")}
+    ).catch(
+      ()=>{console.log("登陆失败")}
+    )
   };
 
   const onFinishFailed = errorInfo => {

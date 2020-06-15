@@ -6,12 +6,10 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import 'antd/dist/antd.css'
 
 ReactDOM.render(
-  <React.StrictMode>
+
     <Router>
       <App />
-    </Router>
-
-  </React.StrictMode>,
+    </Router>,
   document.getElementById('root')
 );
 
