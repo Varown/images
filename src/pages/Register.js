@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input, Button} from 'antd';
 import styled from 'styled-components'
+import {useStores} from "../stores";
 
 const Wraper = styled.div`
   max-width: 600px;
@@ -25,8 +26,19 @@ const tailLayout = {
 };
 
 const Register = () => {
+
+  const {AuthStore}=useStores()
+
   const onFinish = values => {
     console.log('Success:', values);
+    AuthStore.setUsername(values.username)
+    AuthStore.setPassword(values.password)
+    AuthStore.register().then(
+      ()=>{console.log("注册成功")}
+    ).catch(
+      ()=>{console.log("注册失败")}
+    )
+
   };
 
   const onFinishFailed = errorInfo => {
@@ -60,7 +72,6 @@ const  validateConfirm=({getFieldValue})=>({
         name="username"
         rules={[{ required: true, message: '请输入用户名' },
           {validator:validateUsername},
-
 
           ]}
       >
