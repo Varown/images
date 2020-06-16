@@ -152,5 +152,8 @@
         }
       ]
     ]
+  },
+  "devDependencies": {
+    "react-infinite-scroller": "^1.2.4"
   }
 }
