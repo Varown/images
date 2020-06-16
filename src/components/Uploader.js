@@ -20,6 +20,12 @@ const Image = styled.img`
   max-width: 300px;
 `;
 
+const Input = styled.input`
+margin-top: 5px;
+  margin-right: 10px;
+  border-radius: 4px;
+`;
+
 
 const { Dragger } = Upload;
 
@@ -72,6 +78,12 @@ const { Dragger } = Upload;
         message.warning('请先登录再上传！');
         return false;
       }
+
+      if (!/(svg$)|(png$)|(jpg$)|(jpeg$)|(gif$)/ig.test(file.type)) {
+        message.error('只能上传png/svg/jpg/gif格式的图片');
+        return false;
+      }
+
       ImageStore.upload()
         .then((serverFile) => {
           console.log('上传成功')
@@ -99,21 +111,24 @@ const { Dragger } = Upload;
         ImageStore.serverFile ? <Result>
           <H1>上传结果</H1>
           <dl>
-            <dt>线上地址</dt>
+            <dt>线上地址:</dt>
             <dd><a  href={ImageStore.serverFile.attributes.url.attributes.url}>{ ImageStore.serverFile.attributes.url.attributes.url}</a></dd>
             <dt>文件名</dt>
             <dd>{ImageStore.filename}</dd>
             <dt>图片预览</dt>
             <dd>
-              <Image src={ImageStore.serverFile.attributes.url.attributes.url}/>
+              <Image target='_blank' src={ImageStore.serverFile.attributes.url.attributes.url}/>
             </dd>
             <dt>更多尺寸</dt>
             <dd>
-              <input ref={ref1} onChange={bindWidthChange} placeholder="最大宽度（可选）"/>
-              <input ref={ref2} onChange={bindHeightChange} placeholder="最大高度（可选）"/>
+              <Input ref={ref1} onChange={bindWidthChange} placeholder="最大宽度（可选）"/>
+              <Input ref={ref2} onChange={bindHeightChange} placeholder="最大高度（可选）"/>
             </dd>
+            <dt>
+              修改后的地址:
+            </dt>
            <dd>
-             <a href={store.fullStr}>{store.fullStr}</a>
+             <a target='_blank' href={store.fullStr}>{store.fullStr}</a>
            </dd>
 
           </dl>
