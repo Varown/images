@@ -1,7 +1,7 @@
 import React,{useRef} from 'react';
 import { useStores } from '../stores';
-import { observer } from 'mobx-react';
-import { Upload, message } from 'antd';
+import { observer ,useLocalStore} from 'mobx-react';
+import { Upload, message} from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 
@@ -48,15 +48,19 @@ const { Dragger } = Upload;
      }
 
    }));
+
+
   const ref1 = useRef();
   const ref2 = useRef();
 
   const bindWidthChange=()=>{
-
+     store.setWidth(ref1.current.value)
 
   }
-  const bindHeightChange=()=>{}
+  const bindHeightChange=()=>{
+    store.setHeight(ref2.current.value)
 
+  }
 
 
   const props = {
@@ -108,7 +112,9 @@ const { Dragger } = Upload;
               <input ref={ref1} onChange={bindWidthChange} placeholder="最大宽度（可选）"/>
               <input ref={ref2} onChange={bindHeightChange} placeholder="最大高度（可选）"/>
             </dd>
-
+           <dd>
+             <a href={store.fullStr}>{store.fullStr}</a>
+           </dd>
 
           </dl>
         </Result> :null
