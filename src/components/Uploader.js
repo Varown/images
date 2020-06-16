@@ -10,26 +10,29 @@ const { Dragger } = Upload;
 
 
 const Uploader=observer(()=>{
-  const { ImageStore } = useStores();
+  const { ImageStore,UserStore } = useStores();
 
-  const props={
+  const props = {
     showUploadList: false,
-    beforeUpload:file=>{
-      ImageStore.setFile(file)
-      ImageStore.setFilename(file.name)
+    beforeUpload: file => {
+      ImageStore.setFile(file);
+      ImageStore.setFilename(file.name);
+      if(UserStore.currentUser === null) {
+        message.warning('请先登录再上传！');
+        return false;
+      }
       ImageStore.upload()
-        .then((serverFile)=>{
+        .then((serverFile) => {
           console.log('上传成功')
           console.log(serverFile);
-        }).catch(()=>{
+        }).catch(() => {
         console.log('上传失败')
       });
+      return false;
     }
-
-  }
+  };
 
   return(
-
     <div>
       <Dragger {...props}>
         <p className="ant-upload-drag-icon">

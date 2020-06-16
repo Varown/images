@@ -22,9 +22,11 @@ class ImageStore {
       Uploader.add(this.file, this.filename)
         .then(serverFile => {
           this.serverFile = serverFile;
+          console.log(serverFile);
           resolve(serverFile);
         }).catch(err => {
         console.error('上传失败');
+
         reject(err);
       }).finally(() => {
         this.isUpoading = false;
