@@ -1,6 +1,5 @@
 import { observable, action } from 'mobx';
 import { Uploader } from '../models';
-import { message } from 'antd';
 
 class HistoryStore {
   @observable list = [];
@@ -28,7 +27,6 @@ class HistoryStore {
        }
        }
   ).catch(
-    message.error('加载失败')
 
    ).finally(()=>{
        this.isLoading=false

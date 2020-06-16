@@ -20,7 +20,6 @@ const Lists = observer(() => {
   };
 
   useEffect(() => {
-    console.log('进入组件')
 
     return () => {
       console.log('卸载')
@@ -35,7 +34,7 @@ const Lists = observer(() => {
         pageStart={0}
         loadMore={loadMore}
         hasMore={!HistoryStore.isLoading&&HistoryStore.hasMore}
-        useWindow={true}
+        useWindow={false}
       >
         <List
           dataSource={HistoryStore.list}

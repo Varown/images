@@ -1,6 +1,7 @@
 {
   "name": "epic",
   "version": "0.1.0",
+  "homepage": "http://varown.gitee.io/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
@@ -73,7 +74,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "deploy": "sh scripts/deploy.sh"
   },
   "eslintConfig": {
     "extends": "react-app"

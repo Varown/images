@@ -56,9 +56,9 @@ const history=useHistory()
     <StyledHeader>
       <Logos src={Logo} alt={Logo}/>
       <nav>
-        <StyledLink to="/" activeClassName="active" exact >首页</StyledLink>
-        <StyledLink to="/history" activeClassName="active">上传历史</StyledLink>
-        <StyledLink to="/about" activeClassName="active">关于我</StyledLink>
+        <StyledLink exact to="/" activeClassName="active"  >首页</StyledLink>
+        <StyledLink  exact to="/history" activeClassName="active">上传历史</StyledLink>
+        <StyledLink  exact to="/about" activeClassName="active">关于我</StyledLink>
       </nav>
       <Login>
         {

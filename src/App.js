@@ -22,7 +22,7 @@ function App() {
       <main>
         <Suspense fallback={<Loading/>}>
         <Switch>
-         <Route path="/" exact component={Home} />
+         <Route path="/" component={Home} exact />
          <Route path="/history" component={History} />
          <Route path="/about" component={About} />
           <Route path="/login" component={Login} />
