@@ -1,6 +1,7 @@
 import { observable, action } from 'mobx';
 import { Auth } from '../models';
 import UserStore from  './user'
+import {message} from "antd";
 
 class AuthStore {
 
@@ -26,6 +27,7 @@ class AuthStore {
           resolve(user)
         }).catch(err => {
         console.log("登陆失败");
+        message.error("登陆失败")
         UserStore.resetUser()
         reject(err)
       })
@@ -37,11 +39,10 @@ class AuthStore {
       Auth.register(this.values.username, this.values.password)
         .then(user => {
           UserStore.pullUser()
-          console.log("注册成功");
           resolve(user)
         }).catch(err => {
           UserStore.resetUser()
-        console.log("注册失败");
+        message.error("注册失败")
         reject(err)
       })
     })
