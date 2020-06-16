@@ -2,9 +2,9 @@ import AV, { User} from 'leancloud-storage'
 
 
 AV.init({
-  appId: "ufMsLhhTqrIUBjzFO4AuRK6b-gzGzoHsz",
-  appKey: "u39Po6BYMzTRE6O4k1uzWOGu",
-  serverURL: "https://ufmslhht.lc-cn-n1-shared.com"
+  appId: "23wBe6Q7zmMsGnhXBh5YM71G-gzGzoHsz",
+  appKey: "tPIm3QslCu06HtwqJ1KvVqFE",
+  serverURL: "https://23wbe6q7.lc-cn-n1-shared.com"
 });
 
 const Auth={
@@ -50,6 +50,7 @@ const Uploader = {
     });
   }
 }
+
 
 
 
