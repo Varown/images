@@ -20,6 +20,7 @@ const Image = styled.img`
   max-width: 300px;
 `;
 
+
 const { Dragger } = Upload;
 
 const Uploader=observer(()=>{
@@ -70,7 +71,11 @@ const Uploader=observer(()=>{
               <Image src={ImageStore.serverFile.attributes.url.attributes.url}/>
             </dd>
           </dl>
-        </Result> : null
+        </Result> :null
+
+
+
+
       }
     </div>
   )

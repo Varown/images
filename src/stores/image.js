@@ -1,9 +1,9 @@
 import { observable, action } from 'mobx';
-import {Uploader } from '../models';
+import { Uploader } from '../models';
 
 class ImageStore {
-  @observable filename = '';
-  @observable file = null
+  @observable filename = "";
+  @observable file = null;
   @observable isUpoading = false;
   @observable serverFile = null;
 
@@ -15,18 +15,15 @@ class ImageStore {
     this.file = newFile;
   }
 
-
   @action upload() {
     this.isUpoading = true;
     return new Promise((resolve, reject) => {
       Uploader.add(this.file, this.filename)
         .then(serverFile => {
           this.serverFile = serverFile;
-          console.log(serverFile);
           resolve(serverFile);
         }).catch(err => {
         console.error('上传失败');
-
         reject(err);
       }).finally(() => {
         this.isUpoading = false;
@@ -35,5 +32,8 @@ class ImageStore {
 
   }
 
+
 }
-export default new ImageStore() ;
+
+
+export default new ImageStore();

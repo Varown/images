@@ -6,6 +6,7 @@ import Loading from './components/Loading'
 import {Switch, Route} from "react-router-dom";
 
 const Home = lazy(() => import('./pages/Home'));
+
 const History = lazy(() => import('./pages/History'));
 
 const About = lazy(() => import('./pages/About'));
