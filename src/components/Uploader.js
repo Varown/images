@@ -83,7 +83,10 @@ const { Dragger } = Upload;
         message.error('只能上传png/svg/jpg/gif格式的图片');
         return false;
       }
-
+      if (file.size > 1024 * 1024) {
+        message.error('图片最大1M');
+        return false;
+      }
       ImageStore.upload()
         .then((serverFile) => {
           console.log('上传成功')
