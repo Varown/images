@@ -9,4 +9,5 @@ git commit -m 'deploy' &&
 
 git remote add origin git@gitee.com:varown/epic.git &&
 git push -u origin master -f
+
 cd -

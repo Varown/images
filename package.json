@@ -1,7 +1,7 @@
 {
   "name": "epic",
   "version": "0.1.0",
-  "homepage": "http://varown.gitee.io/epic",
+  "homepage": "http://varown.gitee.io/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
