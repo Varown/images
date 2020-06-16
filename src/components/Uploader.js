@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useRef} from 'react';
 import { useStores } from '../stores';
 import { observer } from 'mobx-react';
 import { Upload, message } from 'antd';
@@ -23,8 +23,41 @@ const Image = styled.img`
 
 const { Dragger } = Upload;
 
-const Uploader=observer(()=>{
+ const Uploader=observer(()=>{
+
+
   const { ImageStore,UserStore } = useStores();
+   const store = useLocalStore(() => ({
+     width: null,
+     setWidth(width) {
+       store.width = width;
+     },
+     get widthStr() {
+       return store.width?`/w/${store.width}`:'';
+     },
+     height: null,
+     setHeight(height) {
+       store.height = height;
+     },
+     get heightStr() {
+       return store.height?`/h/${store.height}`:'';
+     },
+     get fullStr() {
+       //?imageView2/0/w/800/h/400)
+       return ImageStore.serverFile.attributes.url.attributes.url + '?imageView2/0' + store.widthStr + store.heightStr
+     }
+
+   }));
+  const ref1 = useRef();
+  const ref2 = useRef();
+
+  const bindWidthChange=()=>{
+
+
+  }
+  const bindHeightChange=()=>{}
+
+
 
   const props = {
     showUploadList: false,
@@ -70,6 +103,13 @@ const Uploader=observer(()=>{
             <dd>
               <Image src={ImageStore.serverFile.attributes.url.attributes.url}/>
             </dd>
+            <dt>更多尺寸</dt>
+            <dd>
+              <input ref={ref1} onChange={bindWidthChange} placeholder="最大宽度（可选）"/>
+              <input ref={ref2} onChange={bindHeightChange} placeholder="最大高度（可选）"/>
+            </dd>
+
+
           </dl>
         </Result> :null
 
