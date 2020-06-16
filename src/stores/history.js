@@ -2,7 +2,7 @@ import { observable, action } from 'mobx';
 import { Uploader } from '../models';
 import { message } from 'antd';
 
-class UserStore {
+class HistoryStore {
   @observable list = [];
   @observable isLoading=false
   @observable  hasMore=true
@@ -30,12 +30,12 @@ class UserStore {
   ).catch(
     message.error('加载失败')
 
-   ).finally(
-     this.isLoading=false
-   )
+   ).finally(()=>{
+       this.isLoading=false
+   })
 
   }
 }
 
 
-export default new UserStore() ;
+export default new HistoryStore() ;
