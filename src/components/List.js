@@ -19,6 +19,14 @@ const Lists = observer(() => {
     HistoryStore.find();
   };
 
+  useEffect(() => {
+    console.log('进入组件')
+
+    return () => {
+      console.log('卸载')
+      HistoryStore.reset();
+    }
+  }, []);
 
   return (
     <div>
