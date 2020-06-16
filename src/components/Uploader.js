@@ -1,8 +1,9 @@
-import React ,{useRef}from 'react';
+import React from 'react';
 import { useStores } from '../stores';
 import { observer } from 'mobx-react';
 import { Upload, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
+
 
 const { Dragger } = Upload;
 
@@ -30,7 +31,6 @@ const Uploader=observer(()=>{
   return(
 
     <div>
-      <h1>上传文件</h1>
       <Dragger {...props}>
         <p className="ant-upload-drag-icon">
           <InboxOutlined />
