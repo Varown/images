@@ -10,7 +10,7 @@ const StyledHeader=styled.header`
   display: flex;
   align-items: center;
   padding: 10px 100px;
-  background-color: #02101f;
+  background-color: #F44336;
   color: #fff;
 `
 
